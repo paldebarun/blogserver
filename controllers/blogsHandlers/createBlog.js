@@ -7,7 +7,7 @@ try{
 
 const {email,name,heading,auther,content,category,tags}=req.body;
 
-if (!email || !name || !heading || !auther || !content || !category || !tags) {
+if (!email || !name || !heading || !auther || !content || !category ) {
     return res.status(400).json({
         success: false,
         message: "Fill all the fields correctly"
