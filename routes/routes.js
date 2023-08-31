@@ -11,6 +11,7 @@ const {createblog}=require('../controllers/blogsHandlers/createBlog');
 const {searchByCategory}=require('../controllers/blogsHandlers/searchbycategory');
 const {searchByTags} =require('../controllers/blogsHandlers/searchbytags');
 const {fetchuserblogs}=require('../controllers/blogsHandlers/fetchuserBlogs');
+const {fetchAllblogs}=require('../controllers/blogsHandlers/fetchallBlogs');
 
 router.post('/signup', signup);
 router.post('/login', login);
@@ -22,4 +23,6 @@ router.post('/createblog',createblog);
 router.get('/search/:category', searchByCategory);
 router.get('/search', searchByTags);
 router.get('/userblogs/:email',fetchuserblogs);
+router.get('/fetchallblogs',fetchAllblogs);
+
 module.exports = { router }; 
