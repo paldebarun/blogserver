@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 exports.updateProfile = async (req, res) => {
     try {
-        const { _id, imageUrl, username, pseudonym, job, country, email, bio } = req.body;
+        const { _id, url, username, pseudonym, job, country, email, bio } = req.body;
 
         
         if (!mongoose.isValidObjectId(_id)) {
@@ -12,7 +12,7 @@ exports.updateProfile = async (req, res) => {
 
        
         const updateFields = {};
-        if (imageUrl) updateFields.imageurl = imageUrl;
+        if (url) updateFields.imageurl = url;
         if (username) updateFields.username = username;
         if (pseudonym) updateFields.pseudonym = pseudonym;
         if (job) updateFields.job = job;

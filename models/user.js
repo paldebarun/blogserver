@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const nodemailer=require('nodemailer');
 
 const UserSchema=new mongoose.Schema({
 
