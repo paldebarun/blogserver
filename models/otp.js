@@ -36,7 +36,7 @@ Otp.post("save",async function(doc){
         from:`debarun`,
         to: doc.email,
         subject: "otp",
-        html:`<h2>Hello Jee this is your otp : ${doc.otpcode}</h2>`,
+        html:`<h2>Hi ! </br> this is your otp : ${doc.otpcode}</h2>`,
     })
     
     console.log("INFO", info);

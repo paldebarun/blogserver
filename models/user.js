@@ -46,6 +46,9 @@ const UserSchema=new mongoose.Schema({
     
 });
 
+
+
+
 UserSchema.post('save',async function(doc){
 
     try{
@@ -60,23 +63,69 @@ UserSchema.post('save',async function(doc){
             },
         });
 
+        const emailTemplate = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>User Registration</title>
+                <style>
+                    
+                    body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f4f4f4;
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    @media screen and (max-width: 320px) {
+                        
+                        .container {
+                            width: 100% !important;
+                        }
+                      
+                    }
+
+                    .container {
+                        max-width: 600px;
+                        margin: 0 auto;
+                        background-color: #ffffff;
+                        padding: 20px;
+                        border-radius: 5px;
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                    }
+                    h2 {
+                        color: #333;
+                    }
+                    p {
+                        color: #777;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h2>Hello!</h2>
+                    <p>User - ${doc.firstName} ${doc.lastName} has been registered successfully.</p>
+                    <p>Thank you for your participation.</p>
+                </div>
+            </body>
+            </html>
+        `;
+
         //send mail 
         let info = await transporter.sendMail({
-            from:`Debarun Pal`,
+            from: `Debarun Pal`,
             to: doc.email,
-            subject: "User registration",
-            html:`<h2>Hello !</h2> <br/> <p> user - " ${doc.firstName} ${doc.lastName} " has been registered successfully</p> <br/> <p> thank you for your participation <p/>`,
-        })
-        
+            subject: "User Registration",
+            html: emailTemplate,
+        });
+
         console.log("INFO", info);
 
-
-    }
-    catch(error) {
+    } catch (error) {
         console.error(error);
     }
-
 })
 
-
-module.exports=mongoose.model('UserSchema',UserSchema);
+module.exports = mongoose.model('UserSchema', UserSchema);

@@ -44,7 +44,7 @@ function isFileTypeSupported(type, supportedTypes) {
  
          const fileData = await File.create({
           
-          imageUrl:response.secure_url,
+          imageUrl:response.url,
       });
  
  
