@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "deb": "nodemon index.js"
+    "deb": "nodemon index.js",
+    "build":"webpack --mode production"
   },
   "keywords": [],
   "author": "",

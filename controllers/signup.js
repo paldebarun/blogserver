@@ -1,5 +1,5 @@
 const UserSchema = require('../models/user');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const profile=require('../models/profile');
 
 exports.signup = async (req, res) => {
