@@ -15,6 +15,13 @@ const {fetchAllblogs}=require('../controllers/blogsHandlers/fetchallBlogs');
 const {deleteblog}=require('../controllers/blogsHandlers/deleteblog');
 const {generateotp}=require('../controllers/OTPhandlers/generateotp');
 const {checkOtp}=require('../controllers/OTPhandlers/checkotp');
+const {addcomments}=require('../controllers/commenthandler/addcomment');
+const {addlikes}=require('../controllers/likehandlers/addlike');
+const {removelike}=require('../controllers/likehandlers/unlike');
+const {deleteComment}=require('../controllers/commenthandler/uncomment');
+
+
+
 
 router.post('/signup', signup);
 router.post('/login', login);
@@ -30,6 +37,9 @@ router.get('/fetchallblogs',fetchAllblogs);
 router.post('/deleteBlog',deleteblog);
 router.post('/sendOtp',generateotp);
 router.post('/checkotp',checkOtp);
-
+router.post('/addcomment',addcomments);
+router.post('/like',addlikes);
+router.post('/unlike',removelike);
+router.post('/uncomment/:commentId/:userEmail',deleteComment);
 
 module.exports = { router }; 

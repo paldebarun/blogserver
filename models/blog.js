@@ -29,6 +29,15 @@ const blogSchema=new mongoose.Schema({
         type:String,
         require:true
     },
+    comments:[{
+       type:mongoose.Schema.Types.ObjectId,
+       ref:'commentSchema'
+    }],
+
+    likes:[ { type:mongoose.Schema.Types.ObjectId,
+        ref:'likesSchema'
+     }],
+
     date:{
         type:Date,
         default:Date.now()
