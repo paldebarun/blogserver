@@ -7,6 +7,10 @@ user_id:{
   ref:'UserSchema'
 },
 
+autherName:{
+type:String
+},
+
 blog_id:{
 
     type:mongoose.Schema.Types.ObjectId,
@@ -15,6 +19,8 @@ blog_id:{
 
 }
 ,
+
+
 
 comment_body:{
 

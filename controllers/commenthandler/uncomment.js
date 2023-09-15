@@ -6,7 +6,7 @@ exports.deleteComment = async (req, res) => {
     try {
         const commentId = req.params.commentId; // Assuming you pass commentId in the URL params
         const userEmail = req.params.userEmail; // Assuming you have user information with an email field
-
+      
         // Find the user by their email to get their ID
         const user = await UserSchema.findOne({ email: userEmail });
 

@@ -1,6 +1,7 @@
 const likesSchema = require('../../models/likes');
 const mongoose = require('mongoose');
 const blogSchema = require('../../models/blog');
+const UserSchema=require('../../models/user');
 
 exports.addlikes = async (req, res) => {
     try {
@@ -18,7 +19,7 @@ exports.addlikes = async (req, res) => {
 
         // Check if the user has already liked the blog
         const existingLike = await likesSchema.findOne({ user_id: userid, blog_id: blogid });
-
+        
         if (existingLike) {
             return res.status(400).json({
                 success: false,
@@ -27,16 +28,18 @@ exports.addlikes = async (req, res) => {
         }
 
         const blog = await blogSchema.findById(blogid);
-
-        if (!blog) {
+        const user=await UserSchema.findById(userid);
+        
+        if (!blog || !user) {
             return res.status(400).json({
                 success: false,
-                message: "The blog is not found"
+                message: "either the blog or the user  is not found"
             });
         }
 
         const obj = new likesSchema({
             user_id: userid,
+            autherName:user.autherName,
             blog_id: blogid
         });
 

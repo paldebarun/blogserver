@@ -19,8 +19,9 @@ const {addcomments}=require('../controllers/commenthandler/addcomment');
 const {addlikes}=require('../controllers/likehandlers/addlike');
 const {removelike}=require('../controllers/likehandlers/unlike');
 const {deleteComment}=require('../controllers/commenthandler/uncomment');
-
-
+const {fetchblogcomments}=require('../controllers/commenthandler/blogcomments');
+const {checkLike}=require('../controllers/likehandlers/checklike');
+const {fetchuser}=require('../controllers/userhandler/fetchuser')
 
 
 router.post('/signup', signup);
@@ -41,5 +42,11 @@ router.post('/addcomment',addcomments);
 router.post('/like',addlikes);
 router.post('/unlike',removelike);
 router.post('/uncomment/:commentId/:userEmail',deleteComment);
+router.get('/fetchcomments/:blogid',fetchblogcomments);
+router.post('/checklike',checkLike);
+router.post('/fetchuser',fetchuser);
+
+
+
 
 module.exports = { router }; 

@@ -32,6 +32,7 @@ exports.addcomments=async (req,res)=>{
 
         const commentobj=new commentSchema({
             user_id:user._id,
+            autherName:user.autherName,
             blog_id:id,
             comment_body:body
         });
