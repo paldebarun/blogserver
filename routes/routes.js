@@ -43,7 +43,7 @@ router.post('/addcomment',addcomments);
 router.post('/like',addlikes);
 router.post('/unlike',removelike);
 router.post('/uncomment/:commentId/:userEmail',deleteComment);
-router.get('/fetchcomments/:blogid',fetchblogcomments);
+router.post('/fetchcomments',fetchblogcomments);
 router.post('/checklike',checkLike);
 router.post('/fetchuser',fetchuser);
 router.post('/fetchlikesauthernames',fetchBlogLikesauthernames);

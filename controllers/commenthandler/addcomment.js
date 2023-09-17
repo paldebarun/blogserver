@@ -9,6 +9,7 @@ exports.addcomments=async (req,res)=>{
     try{
 
         const {email,id,body}=req.body;
+        
 
         const user=await UserSchema.findOne({email});
 
@@ -36,6 +37,8 @@ exports.addcomments=async (req,res)=>{
             blog_id:id,
             comment_body:body
         });
+
+        console.log("user name : ",user.autherName);
 
         if(!commentobj){
             return res.status(400).json({

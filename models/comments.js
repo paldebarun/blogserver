@@ -8,7 +8,8 @@ user_id:{
 },
 
 autherName:{
-type:String
+type:String,
+require:true
 },
 
 blog_id:{

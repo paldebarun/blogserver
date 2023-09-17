@@ -1,10 +1,13 @@
 const blogSchema=require('../../models/blog');
 const commentSchema = require('../../models/comments');
+const mongoose=require('mongoose');
 
 exports.fetchblogcomments = async (req, res) => {
     try {
-        const blog_id = req.params.blogid;
-        const blog = await blogSchema.findById(blog_id);
+        const {blog_id} = req.body;
+        console.log("blog id ", blog_id);
+        const blogId = new mongoose.Types.ObjectId(blog_id);
+        const blog = await blogSchema.findById(blogId);
 
         if (!blog) {
             return res.status(400).json({
