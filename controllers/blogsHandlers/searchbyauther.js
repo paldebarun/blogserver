@@ -1,25 +1,21 @@
 const  blogSchema = require('../../models/blog');
 
-exports.searchByCategory = async (req, res) => {
+exports.searchByAutherName = async (req, res) => {
     try {
-        const { category } = req.body;
-
-
-        console.log(category);
-
-        const categoryArray= category.split(',');
-        if (!category) {
+        const { auther } = req.body;
+        console.log(auther);
+        if (!auther) {
             return res.status(400).json({
                 success: false,
-                message: "Category parameter is missing"
+                message: "auther parameter is missing"
             });
         }
-
-        const blogs = await blogSchema.find({ category:{$in :categoryArray}});
+        const autherArray= auther.split(',');
+        const blogs = await blogSchema.find({ auther  :{ $in:autherArray} });
         console.log(blogs);
         return res.status(200).json({
             success: true,
-            message: "Blogs found by category",
+            message: "Blogs found by auther name",
             blogs: blogs
         });
     } catch (error) {

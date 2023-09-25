@@ -1,12 +1,13 @@
 const commentSchema = require('../../models/comments');
 const blogSchema = require('../../models/blog');
 const UserSchema = require('../../models/user'); // Import your UserSchema model
+const mongoose = require('mongoose');
 
 exports.deleteComment = async (req, res) => {
     try {
-        const commentId = req.params.commentId; // Assuming you pass commentId in the URL params
-        const userEmail = req.params.userEmail; // Assuming you have user information with an email field
-      
+        const commentId = req.body.commentId; 
+        const userEmail = req.body.userEmail; 
+        const comment_id=new mongoose.Types.ObjectId(commentId);
         // Find the user by their email to get their ID
         const user = await UserSchema.findOne({ email: userEmail });
 
@@ -18,7 +19,7 @@ exports.deleteComment = async (req, res) => {
         }
 
         // Find the comment by its id
-        const comment = await commentSchema.findById(commentId);
+        const comment = await commentSchema.findById(comment_id);
 
         if (!comment) {
             return res.status(404).json({
@@ -27,7 +28,7 @@ exports.deleteComment = async (req, res) => {
             });
         }
 
-        // Check if the user is the author of the comment
+      
         if (comment.user_id.toString() !== user._id.toString()) {
             return res.status(403).json({
                 success: false,
@@ -35,8 +36,8 @@ exports.deleteComment = async (req, res) => {
             });
         }
 
-        // Find the associated blog
-        const blogId = comment.blog_id; // Assuming your comment schema has a blog_id field
+       
+        const blogId = comment.blog_id; 
 
         const blog = await blogSchema.findById(blogId);
 
@@ -47,10 +48,10 @@ exports.deleteComment = async (req, res) => {
             });
         }
 
-        // Remove the comment from the comments collection using deleteOne()
+       
         await commentSchema.deleteOne({ _id: commentId });
 
-        // Remove the comment's _id from the blog's comments array
+        
         blog.comments.pull(commentId);
 
         await blog.save();

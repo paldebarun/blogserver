@@ -23,6 +23,7 @@ const {fetchblogcomments}=require('../controllers/commenthandler/blogcomments');
 const {checkLike}=require('../controllers/likehandlers/checklike');
 const {fetchuser}=require('../controllers/userhandler/fetchuser')
 const {fetchBlogLikesauthernames}=require('../controllers/likehandlers/fetchbloglikes');
+const {searchByAutherName}=require('../controllers/blogsHandlers/searchbyauther');
 
 
 router.post('/signup', signup);
@@ -32,8 +33,8 @@ router.get('/fetchprofile/:email',fetchprofiledata);
 router.post('/updateProfile',updateProfile);
 router.post('/uploadPhoto',imageUpload);
 router.post('/createblog',createblog);
-router.get('/search/:category', searchByCategory);
-router.get('/search', searchByTags);
+router.post('/searchbycategory', searchByCategory);
+router.post('/search', searchByTags);
 router.get('/userblogs/:email',fetchuserblogs);
 router.get('/fetchallblogs',fetchAllblogs);
 router.post('/deleteBlog',deleteblog);
@@ -42,12 +43,12 @@ router.post('/checkotp',checkOtp);
 router.post('/addcomment',addcomments);
 router.post('/like',addlikes);
 router.post('/unlike',removelike);
-router.post('/uncomment/:commentId/:userEmail',deleteComment);
+router.post('/uncomment',deleteComment);
 router.post('/fetchcomments',fetchblogcomments);
 router.post('/checklike',checkLike);
 router.post('/fetchuser',fetchuser);
 router.post('/fetchlikesauthernames',fetchBlogLikesauthernames);
-
+router.post('/fetchbyauthername',searchByAutherName);
 
 
 

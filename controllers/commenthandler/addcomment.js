@@ -9,7 +9,7 @@ exports.addcomments=async (req,res)=>{
     try{
 
         const {email,id,body}=req.body;
-        
+        console.log("these are the credentials",email,id,body);
 
         const user=await UserSchema.findOne({email});
 
@@ -35,7 +35,7 @@ exports.addcomments=async (req,res)=>{
             user_id:user._id,
             autherName:user.autherName,
             blog_id:id,
-            comment_body:body
+            comment_body:body.comment
         });
 
         console.log("user name : ",user.autherName);
