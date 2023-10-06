@@ -38,6 +38,7 @@ exports.signup = async (req, res) => {
         const Profile=new profile({
             imageUrl:"",
             username:"",
+            pseudonym:autherName,
             job:"",
             country:"",
             email:"",
@@ -47,6 +48,8 @@ exports.signup = async (req, res) => {
         });
 
         const savedprofile=await Profile.save();
+
+        console.log(savedprofile);
 
         // User object is created
         const newUser = new UserSchema({
