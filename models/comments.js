@@ -27,7 +27,12 @@ comment_body:{
 
     type:String,
     require:true
-}
+},
+
+replies: [{
+  type: mongoose.Schema.Types.ObjectId,
+  ref: 'commentschema' 
+}]
 
 
 
