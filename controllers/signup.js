@@ -41,7 +41,7 @@ exports.signup = async (req, res) => {
             pseudonym:autherName,
             job:"",
             country:"",
-            email:email,
+            email,
             likesCount:[],
             bio:""
 
