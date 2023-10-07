@@ -36,7 +36,8 @@ exports.updateProfile = async (req, res) => {
             );
 
             if (!user) {
-                return res.status(404).json({ success: false, message: 'User not found' });
+                
+                return res.status(404).json({ success: false, message: 'User not found',user:user });
             }
         }
 
