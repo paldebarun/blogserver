@@ -1,12 +1,12 @@
-const Reply = require('../../models/reply');
-const Comment = require('../../models/comments');
+const replySchema=require('../../models/reply');
+const commentschema=require('../../models/comments');
 
 exports.deletereply = async (req, res) => {
   try {
     const { replyId, commentId } = req.body;
 
     
-    const deletedReply = await Reply.findByIdAndDelete(replyId);
+    const deletedReply = await replySchema.findByIdAndDelete(replyId);
 
     if (!deletedReply) {
       return res.status(404).json({
@@ -15,7 +15,7 @@ exports.deletereply = async (req, res) => {
       });
     }
 
-    const comment = await Comment.findById(commentId);
+    const comment = await commentschema.findById(commentId);
 
     if (!comment) {
       return res.status(404).json({
