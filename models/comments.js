@@ -1,4 +1,6 @@
 const mongoose=require('mongoose');
+const replySchema=require('../models/reply');
+
 
 const commentSchema=new mongoose.Schema({
 
@@ -31,7 +33,7 @@ comment_body:{
 
 replies: [{
   type: mongoose.Schema.Types.ObjectId,
-  ref: 'commentschema' 
+  ref: 'replySchema' 
 }]
 
 

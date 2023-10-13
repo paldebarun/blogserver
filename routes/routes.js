@@ -24,6 +24,8 @@ const {checkLike}=require('../controllers/likehandlers/checklike');
 const {fetchuser}=require('../controllers/userhandler/fetchuser')
 const {fetchBlogLikesauthernames}=require('../controllers/likehandlers/fetchbloglikes');
 const {searchByAutherName}=require('../controllers/blogsHandlers/searchbyauther');
+const {createreply} =require('../controllers/replyhanlders/createreply');
+
 
 
 router.post('/signup', signup);
@@ -49,7 +51,7 @@ router.post('/checklike',checkLike);
 router.post('/fetchuser',fetchuser);
 router.post('/fetchlikesauthernames',fetchBlogLikesauthernames);
 router.post('/fetchbyauthername',searchByAutherName);
-
+router.post('/postreply',createreply);
 
 
 module.exports = { router }; 
