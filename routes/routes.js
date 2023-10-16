@@ -26,6 +26,7 @@ const {fetchBlogLikesauthernames}=require('../controllers/likehandlers/fetchblog
 const {searchByAutherName}=require('../controllers/blogsHandlers/searchbyauther');
 const {createreply} =require('../controllers/replyhanlders/createreply');
 const {deletereply}=require('../controllers/replyhanlders/deletereply');
+const {fetchcommentreplies}=require('../controllers/replyhanlders/fetchreplies');
 
 
 router.post('/signup', signup);
@@ -53,5 +54,6 @@ router.post('/fetchlikesauthernames',fetchBlogLikesauthernames);
 router.post('/fetchbyauthername',searchByAutherName);
 router.post('/postreply',createreply);
 router.post('/deletereply',deletereply);
+router.post('/fecthreplies',fetchcommentreplies);
 
 module.exports = { router }; 

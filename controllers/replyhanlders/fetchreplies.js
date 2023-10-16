@@ -2,7 +2,7 @@ const replySchema=require('../../models/reply');
 const commentSchema = require('../../models/comments');
 const mongoose=require('mongoose');
 
-exports.fetchblogcomments = async (req, res) => {
+exports.fetchcommentreplies = async (req, res) => {
     try {
         const {comment_id} = req.body;
         console.log("blog id ", comment_id);
