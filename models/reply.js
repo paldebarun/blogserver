@@ -7,6 +7,10 @@ const replyschema=new mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:'commentschema'
         },
+        autherName:{
+            type:String,
+            require:true
+            },
     user_id :{
      type: mongoose.Schema.Types.ObjectId,
      ref:'UserSchema'

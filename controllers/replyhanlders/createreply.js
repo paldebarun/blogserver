@@ -1,5 +1,7 @@
 const replySchema=require('../../models/reply');
 const commentschema=require('../../models/comments');
+const mongoose=require('mongoose');
+const UserSchema=require('../../models/user');
 
 exports.createreply=async (req,res)=>{
 
@@ -7,8 +9,12 @@ try{
   
     const {user_id,body,comment_id}=req.body;
 
+    const userid=new mongoose.Types.ObjectId(user_id);
+    const user=await UserSchema.findById({userid});
+
+   
     const replyobj=new replySchema({
-        user_id,body,comment_id
+        user_id,body,comment_id,autherName:user.autherName
     });
 
     const savedreply=await replyobj.save();
