@@ -40,6 +40,7 @@ exports.createreply = async (req, res) => {
         return res.status(200).json({
             success: true,
             message: "The reply is successfully posted",
+            savedReply:savedReply
         });
     } catch (error) {
         console.error(error); // Log the error for debugging
