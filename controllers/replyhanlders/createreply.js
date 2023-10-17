@@ -21,7 +21,7 @@ exports.createreply = async (req, res) => {
             user_id: userid, // Store the user_id as a mongoose ObjectId
             body,
             comment_id,
-            authorName: user.authorName, // Fixed the typo here
+            autherName: user.autherName, // Fixed the typo here
         });
 
         const savedReply = await replyObj.save();
